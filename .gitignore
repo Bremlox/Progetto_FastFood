@@ -1,0 +1,11 @@
+# Dipendenze
+node_modules/
+
+# Variabili d'ambiente (contengono password/credenziali del DB!)
+.env
+
+# File di sistema
+.DS_Store
+
+# Log
+*.log
