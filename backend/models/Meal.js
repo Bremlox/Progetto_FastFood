@@ -33,13 +33,9 @@ const mealSchema = new mongoose.Schema({
     crei il pasto, Mongoose userà automaticamente 9.99.*/       
     price: { type: Number, default: 9.99 }
 }, { 
-/*strict: false: Ti permette di salvare dati nel database anche se non sono 
-definiti esplicitamente in questo schema. È molto flessibile ma va usato con 
-cautela.
-timestamps: true: Mongoose aggiungerà automaticamente due campi: 
+/*timestamps: true: Mongoose aggiungerà automaticamente due campi: 
 createdAt (quando è stato creato il record) e updatedAt (l'ultima volta che è 
 stato modificato).*/
-    strict: false, 
     timestamps: true 
 });
 /*Questa riga "compila" lo schema in un Modello chiamato 'Meal' e lo esporta. 
