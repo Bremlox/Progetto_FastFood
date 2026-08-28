@@ -29,3 +29,19 @@ exports.getMealsByCategory = async (req, res) => {
     res.status(500).json({ messaggio: 'Errore nel recupero dei piatti per categoria', errore: error.message });
   }
 };
+
+exports.getMealById = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const meal = await Meal.findById(id);
+
+    if (!meal) {
+      return res.status(404).json({ messaggio: 'Piatto non trovato' });
+    }
+
+    res.status(200).json(meal);
+  } catch (error) {
+    res.status(500).json({ messaggio: 'Errore nel recupero del piatto', errore: error.message });
+  }
+};

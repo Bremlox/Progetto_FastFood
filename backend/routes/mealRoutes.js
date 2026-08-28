@@ -6,5 +6,6 @@ const mealController = require('../controllers/mealController');
 // una volta collegata in server.js), esegui getAllMeals
 router.get('/', mealController.getAllMeals);
 router.get('/category/:categoria', mealController.getMealsByCategory);
+router.get('/:id', mealController.getMealById);
 
 module.exports = router;
