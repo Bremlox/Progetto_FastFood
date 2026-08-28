@@ -30,6 +30,22 @@ exports.getMealsByCategory = async (req, res) => {
   }
 };
 
+exports.getMealsByName = async (req, res) => {
+  try {
+    const strMeal = req.params.strMeal;
+
+    // $regex cerca la stringa "name" ovunque compaia dentro strMeal
+    // $options: 'i' rende la ricerca case-insensitive (ignora maiuscole/minuscole)
+    const meals = await Meal.find({ 
+      strMeal: { $regex: strMeal, $options: 'i' } 
+    });
+
+    res.status(200).json(meals);
+  } catch (error) {
+    res.status(500).json({ messaggio: 'Errore nel recupero dei piatti per nome', errore: error.message });
+  }
+};
+
 exports.getMealById = async (req, res) => {
   try {
     const id = req.params.id;
@@ -45,3 +61,4 @@ exports.getMealById = async (req, res) => {
     res.status(500).json({ messaggio: 'Errore nel recupero del piatto', errore: error.message });
   }
 };
+
