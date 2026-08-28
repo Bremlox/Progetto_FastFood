@@ -16,3 +16,16 @@ exports.getAllMeals = async (req, res) => {
     res.status(500).json({ messaggio: 'Errore nel recupero dei piatti', errore: error.message });
   }
 };
+// Controller per gestire GET /api/meals/category/:categoria
+// Restituisce solo i piatti che appartengono alla categoria specificata nell'URL
+exports.getMealsByCategory = async (req, res) => {
+  try {
+    const categoria = req.params.categoria;
+
+    const meals = await Meal.find({ strCategory: categoria });
+
+    res.status(200).json(meals);
+  } catch (error) {
+    res.status(500).json({ messaggio: 'Errore nel recupero dei piatti per categoria', errore: error.message });
+  }
+};
