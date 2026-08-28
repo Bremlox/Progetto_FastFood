@@ -1,12 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const mealRoutes = require('./routes/mealRoutes');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware per permettere a Express di leggere i payload in formato JSON
 app.use(express.json());
+
+// Colleghiamo le routes dei piatti sotto il prefisso /api/meals
+app.use('/api/meals', mealRoutes);  
 
 // Connessione a MongoDB Atlas tramite Mongoose
 mongoose.connect(process.env.MONGODB_URI)
